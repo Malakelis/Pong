@@ -1,4 +1,4 @@
-# Raylib C++ Pong Game
+# Pong Game
 C++ Pong Game using Raylib library.
 
 
