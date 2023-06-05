@@ -99,15 +99,22 @@ class CpuPaddle: public Paddle
     public:
         int noise;
         
+      //  float RandomNumber(float min, float max)
+     //   {
+     //       return ((float(rand()) / float(max) )
+     //   }
+        
         void Move(int ball_y)
         {
             if (y + height/2 > ball_y)
             {   
                 y = y - speed + noise;    //bring paddle up to match ball height   
+                //cout << "Ball at height " << ball_y << " Paddle will be brought to " << y << endl;
             }
             if (y + height/2 < ball_y)
             {
                 y = y + speed + noise;   //bring paddle down to match ball height
+                //cout << "Ball at height " << ball_y << " Paddle will be brought to " << y << endl;
             }
             BorderLimit();
         }  
@@ -127,8 +134,6 @@ int main()
     Ball ball;
     Paddle player;
     CpuPaddle cpu;
-
-    cpu.noise = GetRandomValue(-3, 3);
 
     ball.radius = 20;
     ball.x = screen_width/2;
@@ -180,6 +185,8 @@ int main()
         // Movement
         ball.Move();
         player.Move();
+        //cout << cpu.noise << endl;
+        cpu.noise = GetRandomValue(-10, 10);
         cpu.Move(ball.y);
         
         // collision check
